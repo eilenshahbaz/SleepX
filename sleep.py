@@ -9,17 +9,27 @@ def wake_up():
     hour = int(time.strftime("%H"))
     mins = int(time.strftime("%M"))
     hour, mins = wake_up_time(hour, mins, 5)
+    hour, mins, mode = convert_regular_time(hour, mins)
     mins = "0{0}".format(mins) if mins < 10 else mins
-    print("You should wake up at {0}:{1}".format(hour, mins))
+    print("You should wake up at {0}:{1} {2}".format(hour, mins, mode))
 
 
 def sleep_down(hour, minutes):
     hrs = int(hour)
     mins = int(minutes)
     hrs, mins = when_to_sleep(hrs, mins, 6)
+    hrs, mins, mode = convert_regular_time(hrs, mins)
     mins = "0{0}".format(mins) if mins < 10 else mins
-    print("You should go to sleep at {0}:{1} if you want".format(hrs, mins) +
+    print("You should go to sleep at {0}:{1} {2} if you want ".format(hrs, mins, mode) +
           "to wake up at {0}:{1}".format(hour, minutes))
+
+
+def convert_regular_time(hour, minutes):
+    mode = "a.m."
+    if hour > 12:
+        mode = "p.m."
+        hour -= 12
+    return hour, minutes, mode
 
 
 if __name__ == '__main__':
