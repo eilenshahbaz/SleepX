@@ -33,7 +33,6 @@ def convert_regular_time(hour, minutes):
 
 
 if __name__ == '__main__':
-    # try:
     print("Welcome! Would you like to determine when to "
           "1) wake up or  2) go to sleep?\n"
           "Please enter 1 or 2")
